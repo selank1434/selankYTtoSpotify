@@ -1,12 +1,10 @@
 import React from "react";
-import LoginPage from "./LoginPage";
 import LoginButton from "./LoginButton";
-import YTLoginButton from "./YTLoginButton";
+import SelectPlaylistButton from "./SelectPlaylistButton";
 const LandingPage = () => {
   return (
     <div style={{ backgroundColor: 'black', color: 'white', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ textAlign: 'center', width: '100%', maxWidth: '4xl' }}>
-        {/* Header Section */}
         <header style={{ padding: '3rem' }}>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold' }}>Convert YouTube to Spotify</h1>
           <p style={{ marginTop: '1rem', color: '#A1A1A1' }}>Transfer your music library from YouTube into a Spotify playlist in a few easy steps</p>
@@ -14,24 +12,28 @@ const LandingPage = () => {
             Let's Start
           </button>
         </header>
-        
-        {/* Steps Section */}
         <section style={{ backgroundColor: '#2D2D2D', color: 'white', padding: '4rem 1rem', borderRadius: '0.375rem' }}>
           <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold' }}>How to get started?</h2>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', marginTop: '2.5rem' }}>
             <div style={{ width: '80%', padding: '1.5rem', backgroundColor: '#444', borderRadius: '0.375rem' }}>
               <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>1</span>
-              <p style={{ marginTop: '0.5rem' }}>Link your Spotify account.</p>
-              <LoginButton/>
+              <LoginButton 
+                redirect_url={'http://localhost:8000/login'}
+                link_text={'Login to Spotify'}
+                />
             </div>
             <div style={{ width: '80%', padding: '1.5rem', backgroundColor: '#444', borderRadius: '0.375rem' }}>
               <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>2</span>
-              <p style={{ marginTop: '0.5rem' }}>Link Your Youtube account.</p>
-              <YTLoginButton/>
+              <LoginButton
+               redirect_url={'http://localhost:8000/login-yt'}
+               link_text={'Login to Youtube'}
+               />
             </div>
-            <div style={{ width: '80%', padding: '1.5rem', backgroundColor: '#444', borderRadius: '0.375rem' }}>
+            <div style={{ width: '80%', padding: '1.5rem', backgroundColor: '#444', borderRadius: '0.375rem', textAlign: "center" }}>
               <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>3</span>
-              <p style={{ marginTop: '0.5rem' }}>Select your youtube playlist and convert</p>
+              <div>
+                <SelectPlaylistButton/>
+              </div>
             </div>
           </div>
         </section>

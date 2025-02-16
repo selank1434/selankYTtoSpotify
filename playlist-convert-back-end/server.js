@@ -116,7 +116,7 @@ app.get('/check-yt-login', (req, res) => {
   }
 });
 
-app.get('/login', (req, res) => {
+app.get('/login-spotify', (req, res) => {
     const state = generateRandomString(16);
     const scope = 'user-read-private user-read-email playlist-read-private playlist-modify-public playlist-modify-private';
     console.log('hit login button');
@@ -191,10 +191,9 @@ app.get('/callback-spotify', async (req, res) => {
 
 app.get('/callbackyoutube', async (req, res) => {
   const {code, state} = req.query;
-  // console.log('code',code);
-  // console.log('state',state);
   const { tokens } = await oauth2Client.getToken(code);
-  const {access_token,expiry_date} = tokens;
+  const {access_token,expiry_date,refresh_token} = tokens;
+
   res.cookie('yt_access_token', encryptToken(access_token, COOKIE_ENCRYPT_KEY), {
     httpOnly: true,
     maxAge: expiry_date,

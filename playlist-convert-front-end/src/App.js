@@ -9,10 +9,21 @@ import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import {spotifyLogIn, spotifyLogOut, youtubeLogIn,youtubeLogOut} from './redux/authSlice';
-import LoggedInPage from './components/LoggedInPage';
-import LoginPage from './components/LoginPage';
 import LandingPage from './components/LandingPage';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ConvertPage from './pages/ConvertPage';
 
+// function Home() {
+//   return <h2>Home Page</h2>;
+// }
+
+// function About() {
+//   return <h2>About Page</h2>;
+// }
+
+// function Contact() {
+//   return <h2>Contact Page</h2>;
+// }
 
 
 
@@ -41,13 +52,12 @@ function App() {
   const ytLoggedIn = useSelector((state) => state.auth.youtubeLoggedIn); 
   return (
     <div className="App">
-      {!spotifyLoggedIn || !ytLoggedIn? (
-          // <LoginPage/>
-          <LandingPage/>
-        ) : (
-          <LoggedInPage/>
-        )}
-    
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage/>} />
+          <Route path="/about" element={<ConvertPage/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
