@@ -1,6 +1,6 @@
-# App Setup Instructions
+# Backend Set Up Instructions
 
-This README provides instructions on how to create and configure a new app using the Google Developer Console and Spotify's Developer Dashboard. You will need to obtain your `client_id` and `client_secret` keys for both Spotify and YouTube, and use them to configure your app.
+This README provides instructions on how to create and configure you back end app using the Google Developer Console and Spotify's Developer Dashboard. You will need to obtain your `client_id` and `client_secret` keys for both Spotify and YouTube, and use them to configure your app.
 
 ## Prerequisites
 
@@ -31,6 +31,7 @@ Once your developer accounts are set up, you'll be able to generate the required
    6. Set the **Redirect URI** for Google as:
       - `http://localhost:8000/callbackyoutube`
    7. Once created, you will get a **Client ID** and **Client Secret**.
+   8. If in developer mode add the email of who you want to use in your google account 
 
 ### 3. **Configure Environment Variables**
 
