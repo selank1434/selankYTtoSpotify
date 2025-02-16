@@ -1,11 +1,11 @@
 import React from 'react';
-import ConvertButton from './ConvertButton';
+import TracksToConvert from './TracksToConvert';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ConvertModal = ({ isOpen, onClose, playlistId }) => {
 
   const { playlist, status, error } = useSelector((state) => state.ytPlaylistData); // Get playlist data from Redux
-  if (!playlist) return null; // Don't render if modal is closed
+  if (!playlist) return null; 
 
   return (
     <div
@@ -15,15 +15,14 @@ const ConvertModal = ({ isOpen, onClose, playlistId }) => {
         left: 0,
         width: '100%',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.6)', // Dark overlay
+        backgroundColor: 'rgba(0, 0, 0, 0.6)', 
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 1000, // Ensures it's above everything
+        zIndex: 1000,
       }}
-      onClick={onClose} // Close modal when clicking outside
+      onClick={onClose}
     >
-      {/* Modal Content */}
       <div
         style={{
           backgroundColor: '#2D2D2D',
@@ -31,17 +30,16 @@ const ConvertModal = ({ isOpen, onClose, playlistId }) => {
           borderRadius: '8px',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
           width: '90%',
-          maxWidth: '500px', // Prevents modal from being too wide
-          maxHeight: '80vh', // Prevents modal from exceeding screen height
-          overflowY: 'auto', // Enables scrolling if needed
+          maxWidth: '500px',
+          maxHeight: '80vh', 
+          overflowY: 'auto', 
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center', // Center content inside modal
+          alignItems: 'center', 
         }}
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+        onClick={(e) => e.stopPropagation()} 
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           style={{
@@ -57,7 +55,7 @@ const ConvertModal = ({ isOpen, onClose, playlistId }) => {
         >
           ✖
         </button>
-        <ConvertButton playlistId={playlistId} />
+        <TracksToConvert playlistId={playlistId} />
       </div>
     </div>
   );

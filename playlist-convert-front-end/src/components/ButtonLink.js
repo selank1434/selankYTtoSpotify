@@ -1,4 +1,4 @@
-const LoginButton = ({redirect_url,link_text}) => {
+const ButtonLink = ({redirect_url,link_text}) => {
   const handleClick = () => {
     window.location.href = redirect_url; 
   };
@@ -11,4 +11,4 @@ const LoginButton = ({redirect_url,link_text}) => {
       </p>
       )
 }
-export default LoginButton;
+export default ButtonLink;

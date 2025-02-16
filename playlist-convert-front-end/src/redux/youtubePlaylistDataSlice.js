@@ -41,7 +41,6 @@ const youtubePlaylistDataSlice = createSlice({
       })
       .addCase(fetchYoutubePlaylistData.fulfilled, (state, action) => {
         state.status = 'succeeded';  // Update the status to 'succeeded' if the fetch is successful
-        console.log('action payload',action.payload)
         state.playlist = action.payload; // Store the playlist data in the state
       })
       .addCase(fetchYoutubePlaylistData.rejected, (state, action) => {

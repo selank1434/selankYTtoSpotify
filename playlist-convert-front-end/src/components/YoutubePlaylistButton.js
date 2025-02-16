@@ -1,18 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchYoutubePlaylistData } from '../redux/youtubePlaylistDataSlice';
-
-const YoutubePlaylistButton = ({ playlist, isSelected, onClick }) => {
+const YoutubePlaylistButton = ({ playlist, onClick }) => {
   const dispatch = useDispatch();
-  
+
   const handleClick = () => {
-    console.log('Button clicked:', playlist.id);
-    console.log('playlist',playlist.snippet.title);
-    
-    // Dispatch the action to fetch playlist data, whether selected or not
     dispatch(fetchYoutubePlaylistData({
       playlistId: playlist.id,
-      playlistTitle: playlist.snippet.title})); 
+      playlistTitle: playlist.snippet.title
+    })); 
     onClick();  // Update the parent state to reflect the selected button
   };
 
@@ -20,16 +16,19 @@ const YoutubePlaylistButton = ({ playlist, isSelected, onClick }) => {
     <button 
       onClick={handleClick} 
       style={{
-        backgroundColor: isSelected ? 'green' : 'gray', // Change button color based on isSelected
+        backgroundColor: '#808080', 
         color: 'white',
         border: 'none',
-        padding: '10px 20px',
+        padding: '10px',
         margin: '5px',
-        cursor: isSelected ? 'not-allowed' : 'pointer', // Disable cursor when selected
+        fontSize: '1.5rem', 
+        width: '100%',
+        maxWidth: '600px',
+        textAlign: 'center',
+        fontWeight: 'bold', 
       }}
-      disabled={isSelected} // Disable button if it is selected
     >
-      {playlist.snippet.title} {/* Button text is the playlist title */}
+      {playlist.snippet.title}
     </button>
   );
 };
