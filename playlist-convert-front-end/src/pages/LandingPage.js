@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import ButtonLink from './ButtonLink';
+import ButtonLink from '../components/ButtonLink';
 
 const LandingPage = () => {
   return (

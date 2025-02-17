@@ -4,7 +4,6 @@ import { fetchSpotifyPlaylistData } from '../redux/spotifyPlaylistDataSlice'; //
 
 const SpotifyPlaylistButton = ({ playlist }) => {
   const dispatch = useDispatch();
-  // console.log(playlist);
   const handleClick = () => {
     dispatch(fetchSpotifyPlaylistData(playlist.id)); // Pass the playlist ID
   };

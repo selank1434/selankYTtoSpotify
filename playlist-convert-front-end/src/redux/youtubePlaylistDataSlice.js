@@ -11,7 +11,6 @@ export const fetchYoutubePlaylistData = createAsyncThunk(
           playlistId: playlistId, 
         },
       });
-      console.log('response data',response.data);
       return {...response.data, title: playlistTitle }; 
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Failed to fetch YouTube playlist details');
@@ -30,6 +29,9 @@ const youtubePlaylistDataSlice = createSlice({
     resetPlaylist: (state) => {
       state.playlist = null;
     },
+    removeItem: (state,action) => {
+      state.playlist.items = state.playlist.items.filter(item => item.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -46,5 +48,5 @@ const youtubePlaylistDataSlice = createSlice({
       });
   },
 });
-export const { resetPlaylist } = youtubePlaylistDataSlice.actions;
+export const { resetPlaylist, removeItem } = youtubePlaylistDataSlice.actions;
 export default youtubePlaylistDataSlice.reducer;
