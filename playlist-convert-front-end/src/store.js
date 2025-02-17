@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './redux/authSlice';  // Import authSlice
-import playlistsReducer from './redux/playlistsSlice';  // Import Spotify playlistsSlice
-import ytPlaylistsReducer from './redux/youtubePlaylistsSlice';  // Import YouTube playlistsSlice
-import ytPlaylistDataReducer from './redux/youtubePlaylistDataSlice';  // Import YouTube playlist data slice (if needed)
+import authReducer from './redux/authSlice'; 
+import playlistsReducer from './redux/playlistsSlice';  
+import ytPlaylistsReducer from './redux/youtubePlaylistsSlice';  
+import ytPlaylistDataReducer from './redux/youtubePlaylistDataSlice';  
 
 const store = configureStore({
   reducer: {
-    auth: authReducer,               // Auth state (Spotify and YouTube login states)
-    playlists: playlistsReducer,     // Spotify playlists state
-    ytPlaylists: ytPlaylistsReducer, // YouTube playlists state
-    ytPlaylistData: ytPlaylistDataReducer,  // YouTube playlist data state (if needed)
+    auth: authReducer,               
+    playlists: playlistsReducer,     
+    ytPlaylists: ytPlaylistsReducer, 
+    ytPlaylistData: ytPlaylistDataReducer,
   },
 });
 

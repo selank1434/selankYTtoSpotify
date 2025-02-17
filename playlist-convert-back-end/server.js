@@ -341,13 +341,11 @@ app.get('/retrieve-yt-playlists', async (req, res) => {
 
 app.post('/convertYtPlaylist', async (req, res) => {;
   const playlist = req.body; 
-
-  console.log('here is what is in my playlist object',playlist.playlist);
-  const song_items = playlist.playlist.items;
+  const song_items = playlist.items;
 
   const titles = getTitles(song_items);
 
-  const playlist_title = playlist.playlist.title;
+  const playlist_title = playlist.title;
   
   console.log('play list title', playlist_title);
 

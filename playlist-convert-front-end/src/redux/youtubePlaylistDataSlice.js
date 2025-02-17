@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async thunk to fetch individual YouTube playlist details
 export const fetchYoutubePlaylistData = createAsyncThunk(
   'youtubePlaylistData/fetchYoutubePlaylistData',
   async ({playlistId,playlistTitle}, { rejectWithValue }) => {
@@ -9,19 +8,17 @@ export const fetchYoutubePlaylistData = createAsyncThunk(
       const response = await axios.get('http://localhost:8000/retrieve-yt-playlist', {
         withCredentials: true,
         params: {
-          playlistId: playlistId, // Pass the playlistId as a query parameter
+          playlistId: playlistId, 
         },
       });
       console.log('response data',response.data);
-      return {...response.data, title: playlistTitle };  // Return the playlist data if the request is successful
+      return {...response.data, title: playlistTitle }; 
     } catch (error) {
-      // Handle errors and pass the error message
       return rejectWithValue(error.response?.data || 'Failed to fetch YouTube playlist details');
     }
   }
 );
 
-// Create the slice for storing the YouTube playlist details
 const youtubePlaylistDataSlice = createSlice({
   name: 'youtubePlaylistData',
   initialState: {
@@ -37,15 +34,15 @@ const youtubePlaylistDataSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchYoutubePlaylistData.pending, (state) => {
-        state.status = 'loading'; // Set the status to 'loading' while fetching
+        state.status = 'loading'; 
       })
       .addCase(fetchYoutubePlaylistData.fulfilled, (state, action) => {
-        state.status = 'succeeded';  // Update the status to 'succeeded' if the fetch is successful
-        state.playlist = action.payload; // Store the playlist data in the state
+        state.status = 'succeeded'; 
+        state.playlist = action.payload; 
       })
       .addCase(fetchYoutubePlaylistData.rejected, (state, action) => {
-        state.status = 'failed';    // Update status to 'failed' if the fetch fails
-        state.error = action.payload; // Store the error message
+        state.status = 'failed';    
+        state.error = action.payload;
       });
   },
 });

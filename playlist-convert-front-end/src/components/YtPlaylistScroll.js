@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchYoutubePlaylists } from '../redux/youtubePlaylistsSlice';
 import YoutubePlaylistButton from './YoutubePlaylistButton';
 import ConvertModal from './ConvertModal'; 
-import { resetPlaylist } from '../redux/youtubePlaylistDataSlice'; // Import the reset action
+import { resetPlaylist } from '../redux/youtubePlaylistDataSlice'; 
 
 
 const YtPlaylistScroll = ({ scrollableTarget }) => {
